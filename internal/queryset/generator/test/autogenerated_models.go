@@ -7,8 +7,8 @@ import (
 	"strings"
 	"time"
 
-	"github.com/jinzhu/gorm"
 	"github.com/jirfag/go-queryset/internal/queryset/generator/tmp"
+	"gorm.io/gorm"
 )
 
 // ===== BEGIN of all query sets

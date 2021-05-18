@@ -18,10 +18,10 @@ import (
 
 	"github.com/jirfag/go-queryset/internal/parser"
 
-	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/jirfag/go-queryset/internal/queryset/generator/test"
 	assert "github.com/stretchr/testify/require"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 
 	sqlmock "gopkg.in/DATA-DOG/go-sqlmock.v1"
 )

@@ -5,8 +5,6 @@ import (
 	"go/types"
 	"reflect"
 	"strings"
-
-	"github.com/jinzhu/gorm"
 )
 
 type BaseInfo struct {
@@ -99,7 +97,7 @@ func (g InfoGenerator) GenFieldInfo(f Field) *Info {
 		return nil
 	}
 
-	dbName := gorm.ToDBName(f.Name())
+	dbName := f.Name()
 	if dbColName := tagSetting["COLUMN"]; dbColName != "" {
 		dbName = dbColName
 	}

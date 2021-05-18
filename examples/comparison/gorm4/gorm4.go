@@ -3,7 +3,7 @@ package gorm4
 import (
 	"time"
 
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 func getGormDB() *gorm.DB {
