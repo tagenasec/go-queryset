@@ -1,8 +1,8 @@
 package methods
 
 import (
-	"github.com/jirfag/go-queryset/internal/parser"
-	"github.com/jirfag/go-queryset/internal/queryset/field"
+	"github.com/tagenasec/go-queryset/internal/parser"
+	"github.com/tagenasec/go-queryset/internal/queryset/field"
 )
 
 type QsStructContext struct {

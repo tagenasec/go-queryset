@@ -9,7 +9,7 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/jirfag/go-queryset/internal/parser"
+	"github.com/tagenasec/go-queryset/internal/parser"
 	"github.com/pkg/errors"
 	"golang.org/x/tools/imports"
 )
