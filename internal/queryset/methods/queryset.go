@@ -194,6 +194,34 @@ func NewNotInFilterMethod(ctx QsFieldContext) InFilterMethod {
 	return newInFilterMethodImpl(ctx, "NotIn", "NOT IN")
 }
 
+// InFilterMethod filters with IN condition
+type FunctionOneArgumentMethodFilterMethod struct {
+	chainedQuerySetMethod
+	onFieldMethod
+	nArgsMethod
+	qsCallGormMethod
+}
+
+func newFunctionOneArgumentMethodFilterMethod(ctx QsFieldContext, operationName, functionName string) FunctionOneArgumentMethodFilterMethod {
+	ctx = ctx.WithOperationName(operationName)
+	argName := fieldNameToArgName(ctx.fieldName())
+	args := newNArgsMethod(
+		newOneArgMethod(argName, "..."+ctx.fieldTypeName()),
+	)
+	return FunctionOneArgumentMethodFilterMethod{
+		onFieldMethod:         ctx.onFieldMethod(),
+		nArgsMethod:           args,
+		chainedQuerySetMethod: ctx.chainedQuerySetMethod(),
+		qsCallGormMethod: newQsCallGormMethod("Where", "\"%s(%s, ?)\", %s",
+			functionName, ctx.fieldDBName(), argName),
+	}
+}
+
+// NewJsonExistsFilterMethod create new JsonbExists filter method
+func NewJsonExistsFilterMethod(ctx QsFieldContext) FunctionOneArgumentMethodFilterMethod {
+	return newFunctionOneArgumentMethodFilterMethod(ctx, "JsonbExists", "JSONB_EXISTS")
+}
+
 func getWhereCondition(name string) string {
 	nameToOp := map[string]string{
 		"eq":      "=",

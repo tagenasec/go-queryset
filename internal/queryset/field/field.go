@@ -15,6 +15,7 @@ type BaseInfo struct {
 	IsNumeric bool
 	IsTime    bool
 	IsString  bool
+	IsJson    bool
 }
 
 type Info struct {
@@ -110,6 +111,14 @@ func (g InfoGenerator) GenFieldInfo(f Field) *Info {
 	if bi.TypeName == "time.Time" {
 		bi.IsTime = true
 		bi.IsNumeric = true
+		return &Info{
+			BaseInfo: bi,
+		}
+	}
+
+	if bi.TypeName == "gorm.io/datatypes.JSON" {
+		bi.IsJson = true
+		bi.TypeName = "string"
 		return &Info{
 			BaseInfo: bi,
 		}

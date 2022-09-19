@@ -30,11 +30,15 @@ func (b *methodsBuilder) getQuerySetMethodsForField(f field.Info) []methods.Meth
 	basicTypeMethods := []methods.Method{
 		methods.NewBinaryFilterMethod(fctx.WithOperationName("eq")),
 		methods.NewBinaryFilterMethod(fctx.WithOperationName("ne")),
-		methods.NewOrderAscByMethod(fctx),
-		methods.NewOrderDescByMethod(fctx),
 	}
 
-	if !f.IsTime {
+	if !f.IsJson {
+		ascMethod := methods.NewOrderAscByMethod(fctx)
+		descMethod := methods.NewOrderDescByMethod(fctx)
+		basicTypeMethods = append(basicTypeMethods, ascMethod, descMethod)
+	}
+
+	if !(f.IsTime || f.IsJson) {
 		inMethod := methods.NewInFilterMethod(fctx)
 		notInMethod := methods.NewNotInFilterMethod(fctx)
 		basicTypeMethods = append(basicTypeMethods, inMethod, notInMethod)
@@ -69,6 +73,11 @@ func (b *methodsBuilder) getQuerySetMethodsForField(f field.Info) []methods.Meth
 		return append(ptrMethods,
 			methods.NewIsNullMethod(fctx),
 			methods.NewIsNotNullMethod(fctx))
+	}
+
+	if f.IsJson {
+		includesMethod := methods.NewJsonExistsFilterMethod(fctx)
+		return append(basicTypeMethods, includesMethod)
 	}
 
 	// it's a string
