@@ -7,7 +7,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/tagenasec/go-queryset/internal/queryset/generator/tmp"
+	"github.com/valencesec/go-queryset/internal/queryset/generator/tmp"
 	"gorm.io/gorm"
 )
 

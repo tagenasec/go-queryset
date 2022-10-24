@@ -7,8 +7,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/tagenasec/go-queryset/internal/parser"
-	"github.com/tagenasec/go-queryset/internal/queryset/generator"
+	"github.com/valencesec/go-queryset/internal/parser"
+	"github.com/valencesec/go-queryset/internal/queryset/generator"
 )
 
 func main() {

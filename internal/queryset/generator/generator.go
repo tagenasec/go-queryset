@@ -9,8 +9,8 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/tagenasec/go-queryset/internal/parser"
 	"github.com/pkg/errors"
+	"github.com/valencesec/go-queryset/internal/parser"
 	"golang.org/x/tools/imports"
 )
 
