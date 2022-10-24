@@ -16,11 +16,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/tagenasec/go-queryset/internal/parser"
+	"github.com/valencesec/go-queryset/internal/parser"
 
-	"github.com/tagenasec/go-queryset/internal/queryset/generator/test"
 	assert "github.com/stretchr/testify/require"
-	"gorm.io/driver/mysql"
+	"github.com/valencesec/go-queryset/internal/queryset/generator/test"
 	"gorm.io/gorm"
 
 	sqlmock "gopkg.in/DATA-DOG/go-sqlmock.v1"
